@@ -212,8 +212,9 @@ class WampClient {
   /// connect to WAMP server at [url].
   ///
   ///     await wamp.connect('wss://example.com/ws');
-  Future connect(String url) async {
-    _ws = await WebSocket.connect(url, protocols: ['wamp.2.json']);
+  Future connect(String url, {Map<String, dynamic>? headers}) async {
+    _ws = await WebSocket.connect(url,
+        protocols: ['wamp.2.json'], headers: headers);
 
     _hello();
 
